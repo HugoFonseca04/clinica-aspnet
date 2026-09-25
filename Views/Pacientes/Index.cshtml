@@ -1,0 +1,8 @@
+@model IEnumerable<Paciente>
+@{ ViewData["Title"] = "Pacientes"; }
+<div class="d-flex justify-content-between align-items-center mb-3"><h1>Pacientes</h1><a asp-action="Create" class="btn btn-primary">Novo paciente</a></div>
+@if (TempData["Mensagem"] != null) { <div class="alert alert-success">@TempData["Mensagem"]</div> }
+<form method="get" class="row g-2 mb-3"><div class="col-md-6"><input name="nome" value="@ViewBag.Nome" class="form-control" placeholder="Pesquisar por nome" /></div><div class="col-auto"><button class="btn btn-outline-primary">Pesquisar</button></div><div class="col-auto"><a asp-action="Index" class="btn btn-outline-secondary">Limpar</a></div></form>
+<table class="table table-striped"><thead><tr><th>Nome</th><th>CPF</th><th>Telefone</th><th>E-mail</th><th>Ativo</th><th>Ações</th></tr></thead><tbody>
+@foreach (var item in Model) { <tr><td>@item.Nome</td><td>@item.Cpf</td><td>@item.Telefone</td><td>@item.Email</td><td>@(item.Ativo ? "Sim" : "Não")</td><td><a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalhes</a> <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a> <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Excluir</a></td></tr> }
+</tbody></table>

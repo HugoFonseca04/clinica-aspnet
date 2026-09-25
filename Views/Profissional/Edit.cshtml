@@ -1,0 +1,2 @@
+@model Profissional
+@{ ViewData["Title"] = "Editar Profissional"; }<h1>Editar Profissional</h1><hr/><form asp-action="Edit" method="post"><input asp-for="Id" type="hidden"/><input asp-for="CriadoEm" type="hidden"/><partial name="_Form" model="Model"/><div class="mt-3"><button class="btn btn-primary">Salvar</button> <a asp-action="Index" class="btn btn-secondary">Voltar</a></div></form>
